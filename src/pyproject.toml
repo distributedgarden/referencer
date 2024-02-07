@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "referencer"
+version = "0.1.0"
+description = ""
+authors = ["Adam Walker <walkerladam@pm.me>"]
+readme = "README.md"
+packages = [
+    { include = "app" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+uvicorn = "^0.23.2"
+langserve = {extras = ["server"], version = ">=0.0.30"}
+pydantic = "<2"
+rag-redis = {path = "packages/rag-redis", develop = true}
+black = "^24.1.1"
+
+
+[tool.poetry.group.dev.dependencies]
+langchain-cli = ">=0.0.15"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

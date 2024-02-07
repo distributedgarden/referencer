@@ -1,0 +1,14 @@
+services:
+  redis:
+    image: "redis/redis-stack-server:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data/redis/data
+  referencer:
+    build: ./src
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
