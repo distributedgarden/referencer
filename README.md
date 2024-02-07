@@ -12,7 +12,7 @@ export OPENAI_API_KEY=...
 
 # let ingest complete and exit 0 then start the app
 > docker-compose down
-> docker-compose --profile app
+> docker-compose --profile app up
 ``` 
 
 
