@@ -1,11 +1,16 @@
 services:
   redis:
+    profiles:
+      - ingest
+      - app
     image: "redis/redis-stack-server:latest"
     ports:
       - "6379:6379"
     volumes:
       - ./data:/data/redis/data
   data-ingest:
+    profiles:
+      - ingest
     build: ./src/packages/rag-redis
     volumes:
       - ./data/resources:/app/data
@@ -13,6 +18,8 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - REDIS_HOST=redis
   referencer:
+    profiles:
+      - app
     build: ./src
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}

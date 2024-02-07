@@ -8,8 +8,12 @@ export OPENAI_API_KEY=...
 ```
 - add a reference text to the `data/resource` directory
 ```
-> docker-compose up
-```
+> docker-compose up --profile ingest up
+
+# let ingest complete and exit 0 then start the app
+> docker-compose down
+> docker-compose up --profile app
+``` 
 
 
 # Development Setup
