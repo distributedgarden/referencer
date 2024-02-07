@@ -5,6 +5,13 @@ services:
       - "6379:6379"
     volumes:
       - ./data:/data/redis/data
+  data-ingest:
+    build: ./src/packages/rag-redis
+    volumes:
+      - ./data/resources:/app/data
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_HOST=redis
   referencer:
     build: ./src
     environment:
@@ -12,3 +19,4 @@ services:
       - REDIS_HOST=redis
     depends_on:
       - redis
+      - data-ingest

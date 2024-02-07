@@ -1,13 +1,12 @@
 import os
 import logging
-import toml
 
 from langchain.document_loaders import UnstructuredFileLoader
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Redis
 
-from packages.rag_redis.config import EMBED_MODEL, INDEX_NAME, INDEX_SCHEMA, REDIS_URL
+from rag_redis.config import EMBED_MODEL, INDEX_NAME, INDEX_SCHEMA, REDIS_URL
 
 logging.basicConfig(level=logging.INFO)
 
@@ -20,6 +19,10 @@ def ingest_documents():
 
     for file in os.listdir(data_path):
         doc = os.path.join(data_path, file)
+
+        _, ext = os.path.splitext(doc)
+        if ext != ".pdf":
+            continue
 
         logging.info(f"Parsing {doc}")
 
