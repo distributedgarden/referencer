@@ -7,7 +7,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./data:/data/redis/data
+      - redis-data:/data
   data-ingest:
     profiles:
       - ingest
@@ -24,6 +24,14 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - REDIS_HOST=redis
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2}
+      - LANGCHAIN_ENDPOINT=${LANGCHAIN_ENDPOINT}
+      - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY}
+      - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT}
     depends_on:
       - redis
       - data-ingest
+    ports:
+      - "8080:8080"
+volumes:
+  redis-data:
