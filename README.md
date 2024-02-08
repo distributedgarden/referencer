@@ -16,7 +16,7 @@ Question-answering with citations
 # Setup 
 
 ## Environment
-### set the required environment variables
+### Set the required environment variables
 ```
 export OPENAI_API_KEY=...
 
@@ -27,7 +27,7 @@ export REDIS_USER=default
 export REDIS_PASSWORD=password
 ```
 
-### set **optional** environment variables
+### Set **optional** environment variables
 ```
 # tracing and monitoring with langsmith
 export LANGCHAIN_TRACING_V2=true
@@ -38,14 +38,10 @@ export LANGCHAIN_PROJECT="referencer"
 ```
 
 ## Initial Setup
-Add reference pdf text(s) to the `data/resource` directory
+- Add reference pdf text(s) to the `data/resource` directory
+- Ingest the data resources. The `data-ingest` container will log `exited with code 0` when it successfuly completes
 ```
-# ingest the data resources
 > docker-compose --profile ingest up
-
-# let ingest complete and exit 0 then start the app
-# this command is all that is required after initial setup
-> docker-compose --profile app up
 ``` 
 
 # Usage
