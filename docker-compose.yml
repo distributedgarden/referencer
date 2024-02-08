@@ -17,6 +17,8 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - REDIS_HOST=redis
+    depends_on:
+      - redis
   referencer:
     profiles:
       - app
@@ -30,7 +32,6 @@ services:
       - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT}
     depends_on:
       - redis
-      - data-ingest
     ports:
       - "8080:8080"
 volumes:
