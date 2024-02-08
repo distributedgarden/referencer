@@ -10,12 +10,7 @@ Question-answering with citations
   - [Interact](#interact)
 - [Development Setup](#development-setup)
   - [tests](#tests)
-- [To Do](#to-do)
-  - [tests](#tests-1)
-  - [rag](#rag)
-  - [api integrations](#api-integrations)
-  - [ui/ux](#uiux)
-  - [r&d](#rd)
+  - [pre-commit hooks](#pre-commit-hooks)
 
 
 # Setup 
@@ -43,7 +38,7 @@ export LANGCHAIN_PROJECT="referencer"
 ```
 
 ## Initial Setup
-### add reference pdf text(s) to the `data/resource` directory
+Add reference pdf text(s) to the `data/resource` directory
 ```
 # ingest the data resources
 > docker-compose --profile ingest up
